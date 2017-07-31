@@ -16,7 +16,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 //    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))  //英文
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "zh-CN"))  //中文
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest? //处理了语音识别请求，它给语音识别提供了语音输入。
-    private var recognitionTask: SFSpeechRecognitionTask? //告诉你语音识别对象的结果，拥有这个对象很方便因为你可以用它删除或者中断任。
+    private var recognitionTask: SFSpeechRecognitionTask? //告诉你语音识别对象的结果，拥有这个对象很方便因为你可以用它删除或者中断任务。
     private let audioEngine = AVAudioEngine() //语音引擎，它负责提供你的语音输入。
 	
 	override func viewDidLoad() {
@@ -66,7 +66,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 	}
 
     func startRecording() {
-        //检查 recognitionTask 是否在运行，如果在就取消任务和识别。
+        //检查 recognitionTask 是否在运行，如果运行就取消任务和识别。
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
@@ -85,7 +85,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         //实例化recognitionRequest，在这里我们创建了SFSpeechAudioBufferRecognitionRequest对象，利用它把语音数据传到苹果后台。
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        //检查 audioEngine（你的设备）是否有做录音功能作为语音输入，如果没有，我们就报告一个错误。
+        //检查 audioEngine（你的设备）是否有录音功能作为语音输入，如果没有，我们就报告一个错误。
         guard let inputNode = audioEngine.inputNode else {
             fatalError("Audio engine has no input node")
         }
@@ -98,7 +98,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         //当用户说话的时候让recognitionRequest报告语音识别的部分结果
         recognitionRequest.shouldReportPartialResults = true
         
-        //调用 speechRecognizer的recognitionTask 方法来开启语音识别。这个方法有一个completion handler回调，这个回调每次都会在识别引擎收到输入的时候，完善了当前识别的信息时候，或者被删除或者停止的时候被调用，最后会返回一个最终的文本。
+        //调用 speechRecognizer的recognitionTask 方法来开启语音识别。这个方法有一个completion handler回调，这个回调每次都会在识别引擎收到输入并完善当前识别信息时，或者被删除、停止时被调用，最后返回一个最终文本。
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             //定义一个布尔值决定识别是否已经结束
