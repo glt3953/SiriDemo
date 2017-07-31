@@ -13,7 +13,8 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 	
 	@IBOutlet weak var textView: UITextView!
 	@IBOutlet weak var microphoneButton: UIButton!
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))  //1
+//    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))  //英文
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "zh-CN"))  //中文
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest? //处理了语音识别请求，它给语音识别提供了语音输入。
     private var recognitionTask: SFSpeechRecognitionTask? //告诉你语音识别对象的结果，拥有这个对象很方便因为你可以用它删除或者中断任。
     private let audioEngine = AVAudioEngine() //语音引擎，它负责提供你的语音输入。
