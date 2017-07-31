@@ -28,6 +28,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Your microphone will be used to record your speech when you press the &apos;Start Recording&apos; button.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition will be used to determine which words you speak into this device&apos;s microphone.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
