@@ -162,6 +162,7 @@
             _recognitionRequest = nil;
             _recognitionTask = nil;
             _microphoneButton.enabled = YES;
+            [_microphoneButton setTitle:@"Start Recording" forState:UIControlStateNormal];
         }
     }];
     
@@ -174,8 +175,8 @@
     //准备并且开始audioEngine
     [_audioEngine prepare];
     @try {
-        [_audioEngine startAndReturnError:nil];
-        
+        NSError *outError = nil;
+        [_audioEngine startAndReturnError:&outError];
     } @catch (NSException *exception) {
         NSLog(@"audioEngine couldn't start because of an error.");
     } @finally {
