@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F365BFFA1F30217200CEFC90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F365BFF91F30217200CEFC90 /* main.m */; };
+		F365BFFD1F30217200CEFC90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F365BFFC1F30217200CEFC90 /* AppDelegate.m */; };
+		F365C0001F30217200CEFC90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F365BFFF1F30217200CEFC90 /* ViewController.m */; };
+		F365C0031F30217200CEFC90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F365C0011F30217200CEFC90 /* Main.storyboard */; };
+		F365C0051F30217200CEFC90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F365C0041F30217200CEFC90 /* Assets.xcassets */; };
+		F365C0081F30217200CEFC90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F365C0061F30217200CEFC90 /* LaunchScreen.storyboard */; };
+		F365C0131F30217200CEFC90 /* SiriDemoByObjectiveCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F365C0121F30217200CEFC90 /* SiriDemoByObjectiveCTests.m */; };
+		F365C01E1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F365C01D1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F365C00F1F30217200CEFC90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F365BFED1F30217200CEFC90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F365BFF41F30217200CEFC90;
+			remoteInfo = SiriDemoByObjectiveC;
+		};
+		F365C01A1F30217200CEFC90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F365BFED1F30217200CEFC90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F365BFF41F30217200CEFC90;
+			remoteInfo = SiriDemoByObjectiveC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F365BFF51F30217200CEFC90 /* SiriDemoByObjectiveC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriDemoByObjectiveC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F365BFF91F30217200CEFC90 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F365BFFB1F30217200CEFC90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F365BFFC1F30217200CEFC90 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F365BFFE1F30217200CEFC90 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F365BFFF1F30217200CEFC90 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F365C0021F30217200CEFC90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F365C0041F30217200CEFC90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F365C0071F30217200CEFC90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F365C0091F30217200CEFC90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F365C00E1F30217200CEFC90 /* SiriDemoByObjectiveCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriDemoByObjectiveCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F365C0121F30217200CEFC90 /* SiriDemoByObjectiveCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SiriDemoByObjectiveCTests.m; sourceTree = "<group>"; };
+		F365C0141F30217200CEFC90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F365C0191F30217200CEFC90 /* SiriDemoByObjectiveCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriDemoByObjectiveCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F365C01D1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SiriDemoByObjectiveCUITests.m; sourceTree = "<group>"; };
+		F365C01F1F30217200CEFC90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F365BFF21F30217200CEFC90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F365C00B1F30217200CEFC90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F365C0161F30217200CEFC90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F365BFEC1F30217200CEFC90 = {
+			isa = PBXGroup;
+			children = (
+				F365BFF71F30217200CEFC90 /* SiriDemoByObjectiveC */,
+				F365C0111F30217200CEFC90 /* SiriDemoByObjectiveCTests */,
+				F365C01C1F30217200CEFC90 /* SiriDemoByObjectiveCUITests */,
+				F365BFF61F30217200CEFC90 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F365BFF61F30217200CEFC90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F365BFF51F30217200CEFC90 /* SiriDemoByObjectiveC.app */,
+				F365C00E1F30217200CEFC90 /* SiriDemoByObjectiveCTests.xctest */,
+				F365C0191F30217200CEFC90 /* SiriDemoByObjectiveCUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F365BFF71F30217200CEFC90 /* SiriDemoByObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				F365BFFB1F30217200CEFC90 /* AppDelegate.h */,
+				F365BFFC1F30217200CEFC90 /* AppDelegate.m */,
+				F365BFFE1F30217200CEFC90 /* ViewController.h */,
+				F365BFFF1F30217200CEFC90 /* ViewController.m */,
+				F365C0011F30217200CEFC90 /* Main.storyboard */,
+				F365C0041F30217200CEFC90 /* Assets.xcassets */,
+				F365C0061F30217200CEFC90 /* LaunchScreen.storyboard */,
+				F365C0091F30217200CEFC90 /* Info.plist */,
+				F365BFF81F30217200CEFC90 /* Supporting Files */,
+			);
+			path = SiriDemoByObjectiveC;
+			sourceTree = "<group>";
+		};
+		F365BFF81F30217200CEFC90 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F365BFF91F30217200CEFC90 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F365C0111F30217200CEFC90 /* SiriDemoByObjectiveCTests */ = {
+			isa = PBXGroup;
+			children = (
+				F365C0121F30217200CEFC90 /* SiriDemoByObjectiveCTests.m */,
+				F365C0141F30217200CEFC90 /* Info.plist */,
+			);
+			path = SiriDemoByObjectiveCTests;
+			sourceTree = "<group>";
+		};
+		F365C01C1F30217200CEFC90 /* SiriDemoByObjectiveCUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F365C01D1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m */,
+				F365C01F1F30217200CEFC90 /* Info.plist */,
+			);
+			path = SiriDemoByObjectiveCUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F365BFF41F30217200CEFC90 /* SiriDemoByObjectiveC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F365C0221F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveC" */;
+			buildPhases = (
+				F365BFF11F30217200CEFC90 /* Sources */,
+				F365BFF21F30217200CEFC90 /* Frameworks */,
+				F365BFF31F30217200CEFC90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriDemoByObjectiveC;
+			productName = SiriDemoByObjectiveC;
+			productReference = F365BFF51F30217200CEFC90 /* SiriDemoByObjectiveC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F365C00D1F30217200CEFC90 /* SiriDemoByObjectiveCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F365C0251F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveCTests" */;
+			buildPhases = (
+				F365C00A1F30217200CEFC90 /* Sources */,
+				F365C00B1F30217200CEFC90 /* Frameworks */,
+				F365C00C1F30217200CEFC90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F365C0101F30217200CEFC90 /* PBXTargetDependency */,
+			);
+			name = SiriDemoByObjectiveCTests;
+			productName = SiriDemoByObjectiveCTests;
+			productReference = F365C00E1F30217200CEFC90 /* SiriDemoByObjectiveCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F365C0181F30217200CEFC90 /* SiriDemoByObjectiveCUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F365C0281F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveCUITests" */;
+			buildPhases = (
+				F365C0151F30217200CEFC90 /* Sources */,
+				F365C0161F30217200CEFC90 /* Frameworks */,
+				F365C0171F30217200CEFC90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F365C01B1F30217200CEFC90 /* PBXTargetDependency */,
+			);
+			name = SiriDemoByObjectiveCUITests;
+			productName = SiriDemoByObjectiveCUITests;
+			productReference = F365C0191F30217200CEFC90 /* SiriDemoByObjectiveCUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F365BFED1F30217200CEFC90 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = NingXia;
+				TargetAttributes = {
+					F365BFF41F30217200CEFC90 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3KQG33P93J;
+						ProvisioningStyle = Automatic;
+					};
+					F365C00D1F30217200CEFC90 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3KQG33P93J;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F365BFF41F30217200CEFC90;
+					};
+					F365C0181F30217200CEFC90 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3KQG33P93J;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F365BFF41F30217200CEFC90;
+					};
+				};
+			};
+			buildConfigurationList = F365BFF01F30217200CEFC90 /* Build configuration list for PBXProject "SiriDemoByObjectiveC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F365BFEC1F30217200CEFC90;
+			productRefGroup = F365BFF61F30217200CEFC90 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F365BFF41F30217200CEFC90 /* SiriDemoByObjectiveC */,
+				F365C00D1F30217200CEFC90 /* SiriDemoByObjectiveCTests */,
+				F365C0181F30217200CEFC90 /* SiriDemoByObjectiveCUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F365BFF31F30217200CEFC90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F365C0081F30217200CEFC90 /* LaunchScreen.storyboard in Resources */,
+				F365C0051F30217200CEFC90 /* Assets.xcassets in Resources */,
+				F365C0031F30217200CEFC90 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F365C00C1F30217200CEFC90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F365C0171F30217200CEFC90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F365BFF11F30217200CEFC90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F365C0001F30217200CEFC90 /* ViewController.m in Sources */,
+				F365BFFD1F30217200CEFC90 /* AppDelegate.m in Sources */,
+				F365BFFA1F30217200CEFC90 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F365C00A1F30217200CEFC90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F365C0131F30217200CEFC90 /* SiriDemoByObjectiveCTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F365C0151F30217200CEFC90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F365C01E1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F365C0101F30217200CEFC90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F365BFF41F30217200CEFC90 /* SiriDemoByObjectiveC */;
+			targetProxy = F365C00F1F30217200CEFC90 /* PBXContainerItemProxy */;
+		};
+		F365C01B1F30217200CEFC90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F365BFF41F30217200CEFC90 /* SiriDemoByObjectiveC */;
+			targetProxy = F365C01A1F30217200CEFC90 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F365C0011F30217200CEFC90 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F365C0021F30217200CEFC90 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F365C0061F30217200CEFC90 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F365C0071F30217200CEFC90 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F365C0201F30217200CEFC90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F365C0211F30217200CEFC90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F365C0231F30217200CEFC90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3KQG33P93J;
+				INFOPLIST_FILE = SiriDemoByObjectiveC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F365C0241F30217200CEFC90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3KQG33P93J;
+				INFOPLIST_FILE = SiriDemoByObjectiveC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F365C0261F30217200CEFC90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 3KQG33P93J;
+				INFOPLIST_FILE = SiriDemoByObjectiveCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SiriDemoByObjectiveC.app/SiriDemoByObjectiveC";
+			};
+			name = Debug;
+		};
+		F365C0271F30217200CEFC90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 3KQG33P93J;
+				INFOPLIST_FILE = SiriDemoByObjectiveCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SiriDemoByObjectiveC.app/SiriDemoByObjectiveC";
+			};
+			name = Release;
+		};
+		F365C0291F30217200CEFC90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3KQG33P93J;
+				INFOPLIST_FILE = SiriDemoByObjectiveCUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SiriDemoByObjectiveC;
+			};
+			name = Debug;
+		};
+		F365C02A1F30217200CEFC90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3KQG33P93J;
+				INFOPLIST_FILE = SiriDemoByObjectiveCUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveCUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SiriDemoByObjectiveC;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F365BFF01F30217200CEFC90 /* Build configuration list for PBXProject "SiriDemoByObjectiveC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F365C0201F30217200CEFC90 /* Debug */,
+				F365C0211F30217200CEFC90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F365C0221F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F365C0231F30217200CEFC90 /* Debug */,
+				F365C0241F30217200CEFC90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F365C0251F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F365C0261F30217200CEFC90 /* Debug */,
+				F365C0271F30217200CEFC90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F365C0281F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveCUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F365C0291F30217200CEFC90 /* Debug */,
+				F365C02A1F30217200CEFC90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F365BFED1F30217200CEFC90 /* Project object */;
+}
