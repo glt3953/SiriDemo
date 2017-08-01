@@ -70,7 +70,7 @@
         switch (status) {
             case SFSpeechRecognizerAuthorizationStatusAuthorized:
             {
-                NSString *localeIdentifier = @"zh-CN"; //zh-CN:中文，en-US:英文
+                NSString *localeIdentifier = @"zh_CN"; //zh-CN:中文，en-US:英文，zh_TW:台湾繁体，zh_HK:香港繁体
                 _speechRecognizer = [[SFSpeechRecognizer alloc] initWithLocale:[[NSLocale alloc] initWithLocaleIdentifier:localeIdentifier]];
                 _speechRecognizer.delegate = self;
                 
