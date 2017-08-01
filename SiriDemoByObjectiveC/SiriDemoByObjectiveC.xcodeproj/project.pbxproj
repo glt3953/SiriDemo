@@ -15,6 +15,8 @@
 		F365C0081F30217200CEFC90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F365C0061F30217200CEFC90 /* LaunchScreen.storyboard */; };
 		F365C0131F30217200CEFC90 /* SiriDemoByObjectiveCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F365C0121F30217200CEFC90 /* SiriDemoByObjectiveCTests.m */; };
 		F365C01E1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F365C01D1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m */; };
+		F365C02E1F30242000CEFC90 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F365C02C1F30242000CEFC90 /* icon@2x.png */; };
+		F365C02F1F30242000CEFC90 /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F365C02D1F30242000CEFC90 /* icon@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		F365C0191F30217200CEFC90 /* SiriDemoByObjectiveCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiriDemoByObjectiveCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F365C01D1F30217200CEFC90 /* SiriDemoByObjectiveCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SiriDemoByObjectiveCUITests.m; sourceTree = "<group>"; };
 		F365C01F1F30217200CEFC90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F365C02C1F30242000CEFC90 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		F365C02D1F30242000CEFC90 /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		F365BFF71F30217200CEFC90 /* SiriDemoByObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
+				F365C02C1F30242000CEFC90 /* icon@2x.png */,
+				F365C02D1F30242000CEFC90 /* icon@3x.png */,
 				F365BFFB1F30217200CEFC90 /* AppDelegate.h */,
 				F365BFFC1F30217200CEFC90 /* AppDelegate.m */,
 				F365BFFE1F30217200CEFC90 /* ViewController.h */,
@@ -250,6 +256,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F365C0081F30217200CEFC90 /* LaunchScreen.storyboard in Resources */,
+				F365C02E1F30242000CEFC90 /* icon@2x.png in Resources */,
+				F365C02F1F30242000CEFC90 /* icon@3x.png in Resources */,
 				F365C0051F30217200CEFC90 /* Assets.xcassets in Resources */,
 				F365C0031F30217200CEFC90 /* Main.storyboard in Resources */,
 			);
@@ -431,6 +439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3KQG33P93J;
 				INFOPLIST_FILE = SiriDemoByObjectiveC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3KQG33P93J;
 				INFOPLIST_FILE = SiriDemoByObjectiveC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ningxia.SiriDemoByObjectiveC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,6 +528,7 @@
 				F365C0241F30217200CEFC90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F365C0251F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveCTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +537,7 @@
 				F365C0271F30217200CEFC90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F365C0281F30217200CEFC90 /* Build configuration list for PBXNativeTarget "SiriDemoByObjectiveCUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +546,7 @@
 				F365C02A1F30217200CEFC90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
