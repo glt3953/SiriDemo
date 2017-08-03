@@ -27,10 +27,16 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     #ifdef GCD_STUDY
-        //        [self syncConcurrent];
-        //        [self asyncConcurrent];
-        //          [self syncSerial];
-        [self asyncSerial];
+//        [self syncConcurrent];
+//        [self asyncConcurrent];
+//        [self syncSerial];
+//        [self syncMain];
+//        [self asyncMain];
+//        [self threadCommunicate];
+//    [self barrierAsync];
+//    [self dispatchAfter];
+//    [self dispatchApply];
+    [self dispatchGroup];
     #endif
     
     /*
@@ -203,17 +209,17 @@
     
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"1------%@",[NSThread currentThread]);
+            NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"2------%@",[NSThread currentThread]);
+            NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"3------%@",[NSThread currentThread]);
+            NSLog(@"3------%@", [NSThread currentThread]);
         }
     });
     
@@ -230,17 +236,17 @@
     
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"1------%@",[NSThread currentThread]);
+            NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"2------%@",[NSThread currentThread]);
+            NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"3------%@",[NSThread currentThread]);
+            NSLog(@"3------%@", [NSThread currentThread]);
         }
     });
     
@@ -257,17 +263,17 @@
     
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"1------%@",[NSThread currentThread]);
+            NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"2------%@",[NSThread currentThread]);
+            NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"3------%@",[NSThread currentThread]);
+            NSLog(@"3------%@", [NSThread currentThread]);
         }
     });
     
@@ -284,22 +290,164 @@
     
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"1------%@",[NSThread currentThread]);
+            NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"2------%@",[NSThread currentThread]);
+            NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
-            NSLog(@"3------%@",[NSThread currentThread]);
+            NSLog(@"3------%@", [NSThread currentThread]);
         }
     });
     
     NSLog(@"asyncSerial---end");
     //所有任务是在打印的syncConcurrent---begin和syncConcurrent---end之后才开始执行的。说明任务不是马上执行，而是将所有任务添加到队列之后才开始同步执行。
+}
+
+//主队列 + 同步执行，互等卡住不可行(在主线程中调用)
+- (void)syncMain {
+    //syncMain方法和第一个任务都在等对方执行完毕，大家互相等待，所以就卡住了，所以我们的任务执行不了
+    NSLog(@"syncMain---begin");
+    
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@", [NSThread currentThread]);
+        }
+    });
+    
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@", [NSThread currentThread]);
+        }
+    });
+    
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@", [NSThread currentThread]);
+        }
+    });
+    
+    NSLog(@"syncMain---end");
+}
+
+//主队列 + 异步执行，只在主线程中执行任务，执行完一个任务，再执行下一个任务
+- (void)asyncMain {
+    //虽然是异步执行，具备开启线程的能力，但因为是主队列，所以所有任务都在主线程中，并且一个接一个执行。
+    NSLog(@"asyncMain---begin");
+    
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@", [NSThread currentThread]);
+        }
+    });
+    
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@", [NSThread currentThread]);
+        }
+    });
+    
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@", [NSThread currentThread]);
+        }
+    });
+    
+    NSLog(@"asyncMain---end");
+    //任务不是马上执行，而是将所有任务添加到队列之后才开始同步执行。
+}
+
+//GCD线程之间的通讯
+- (void)threadCommunicate {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@", [NSThread currentThread]);
+        }
+        
+        // 回到主线程
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"2-------%@", [NSThread currentThread]);
+        });
+    });
+}
+
+//GCD的栅栏方法 dispatch_barrier_async，异步执行两组操作，第一组操作执行完之后，才能开始执行第二组操作。
+- (void)barrierAsync {
+    //在执行完栅栏前面的操作之后，才执行栅栏操作，最后再执行栅栏后边的操作。
+    dispatch_queue_t queue = dispatch_queue_create("12312312", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_async(queue, ^{
+        NSLog(@"----1-----%@", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"----2-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_barrier_async(queue, ^{
+        NSLog(@"----barrier-----%@", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queue, ^{
+        NSLog(@"----3-----%@", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"----4-----%@", [NSThread currentThread]);
+    });
+}
+
+//GCD的延时执行方法 dispatch_after
+- (void)dispatchAfter {
+    NSLog(@"2秒后异步执行代码...");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //2秒后异步执行这里的代码...
+        NSLog(@"run-----");
+    });
+}
+
+//GCD的一次性代码(只执行一次) dispatch_once，使用dispatch_once函数能保证某段代码在程序运行过程中只被执行1次。
+- (void)dispatchOnce {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //只执行1次的代码(这里面默认是线程安全的)
+    });
+}
+
+//GCD的快速迭代方法 dispatch_apply，比如说遍历0~5这6个数字，for循环的做法是每次取出一个元素，逐个遍历。dispatch_apply可以同时遍历多个数字。
+- (void)dispatchApply {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    dispatch_apply(6, queue, ^(size_t index) {
+        NSLog(@"%zd------%@", index, [NSThread currentThread]);
+    });
+}
+
+//GCD的队列组 dispatch_group，分别异步执行2个耗时操作，然后当2个耗时操作都执行完毕后再回到主线程执行操作。这时候我们可以用到GCD的队列组。
+- (void)dispatchGroup {
+    //先把任务放到队列中，然后将队列放入队列组中，调用队列组的dispatch_group_notify回到主线程执行操作。
+    dispatch_group_t group =  dispatch_group_create();
+
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 执行1个耗时的异步操作
+        NSLog(@"----1-----%@", [NSThread currentThread]);
+    });
+
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 执行1个耗时的异步操作
+        NSLog(@"----2-----%@", [NSThread currentThread]);
+    });
+
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        // 等前面的异步操作都执行完毕后，回到主线程...
+        NSLog(@"----group-----%@", [NSThread currentThread]);
+    });
 }
 #endif
 
