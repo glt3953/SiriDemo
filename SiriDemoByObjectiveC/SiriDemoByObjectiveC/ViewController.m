@@ -26,6 +26,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    #ifdef GCD_STUDY
+        //        [self syncConcurrent];
+        //        [self asyncConcurrent];
+        //          [self syncSerial];
+        [self asyncSerial];
+    #endif
+    
     /*
      在info.plist文件里添加了两个键值：
      NSMicrophoneUsageDescription -为获取麦克风语音输入授权的自定义消息。注意这个语音输入授权仅仅只会在用户点击microphone按钮时发生。
@@ -185,6 +192,116 @@
     
     _recognizeTextView.text = @"Say something, I'm listening!";
 }
+
+#ifdef GCD_STUDY
+//并行队列 + 同步执行(sync)，不会开启新线程，执行完一个任务，再执行下一个任务
+- (void)syncConcurrent {
+    //所有任务都是在主线程中执行的，由于只有一个线程，所以任务只能一个一个执行。
+    NSLog(@"syncConcurrent---begin");
+    
+    dispatch_queue_t queue= dispatch_queue_create("test.queue", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@",[NSThread currentThread]);
+        }
+    });
+    
+    NSLog(@"syncConcurrent---end");
+    //所有任务都在打印的syncConcurrent---begin和syncConcurrent---end之间，这说明任务是添加到队列中马上执行的。
+}
+
+//并行队列 + 异步执行，可同时开启多线程，任务交替执行
+- (void)asyncConcurrent {
+    //除了主线程，又开启了3个线程，并且任务是交替着同时执行的。
+    NSLog(@"asyncConcurrent---begin");
+    
+    dispatch_queue_t queue= dispatch_queue_create("test.queue", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@",[NSThread currentThread]);
+        }
+    });
+    
+    NSLog(@"asyncConcurrent---end");
+    //所有任务是在打印syncConcurrent---begin和syncConcurrent---end之后才开始执行的，说明任务不是马上执行，而是将所有任务添加到队列之后才开始异步执行。
+}
+
+//串行队列 + 同步执行，不会开启新线程，在当前线程执行任务。任务是串行的，执行完一个任务，再执行下一个任务
+- (void)syncSerial {
+    //所有任务都是在主线程中执行的，并没有开启新的线程，而且由于串行队列，所以按顺序一个一个执行。
+    NSLog(@"syncSerial---begin");
+    
+    dispatch_queue_t queue = dispatch_queue_create("test.queue", DISPATCH_QUEUE_SERIAL);
+    
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_sync(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@",[NSThread currentThread]);
+        }
+    });
+    
+    NSLog(@"syncSerial---end");
+    //所有任务都在打印的syncConcurrent---begin和syncConcurrent---end之间，这说明任务是添加到队列中马上执行的。
+}
+
+//串行队列 + 异步执行，会开启新线程，但是因为任务是串行的，执行完一个任务，再执行下一个任务
+- (void)asyncSerial {
+    //开启了一条新线程，但是任务还是串行，所以任务是一个一个执行。
+    NSLog(@"asyncSerial---begin");
+    
+    dispatch_queue_t queue = dispatch_queue_create("test.queue", DISPATCH_QUEUE_SERIAL);
+    
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"1------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"2------%@",[NSThread currentThread]);
+        }
+    });
+    dispatch_async(queue, ^{
+        for (int i = 0; i < 2; ++i) {
+            NSLog(@"3------%@",[NSThread currentThread]);
+        }
+    });
+    
+    NSLog(@"asyncSerial---end");
+    //所有任务是在打印的syncConcurrent---begin和syncConcurrent---end之后才开始执行的。说明任务不是马上执行，而是将所有任务添加到队列之后才开始同步执行。
+}
+#endif
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

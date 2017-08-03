@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define GCD_STUDY //控制GCD测试代码的宏
+
 @interface ViewController : UIViewController
 
-
 @end
-
