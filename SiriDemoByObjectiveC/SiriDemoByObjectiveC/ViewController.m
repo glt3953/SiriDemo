@@ -212,11 +212,13 @@
             NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"3------%@", [NSThread currentThread]);
@@ -227,7 +229,7 @@
     //所有任务都在打印的syncConcurrent---begin和syncConcurrent---end之间，这说明任务是添加到队列中马上执行的。
 }
 
-//并行队列 + 异步执行，可同时开启多线程，任务交替执行
+//并行队列 + 异步执行，可同时开启多个线程，任务交替执行
 - (void)asyncConcurrent {
     //除了主线程，又开启了3个线程，并且任务是交替着同时执行的。
     NSLog(@"asyncConcurrent---begin");
@@ -239,11 +241,13 @@
             NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"3------%@", [NSThread currentThread]);
@@ -266,11 +270,13 @@
             NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_sync(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"3------%@", [NSThread currentThread]);
@@ -281,7 +287,7 @@
     //所有任务都在打印的syncConcurrent---begin和syncConcurrent---end之间，这说明任务是添加到队列中马上执行的。
 }
 
-//串行队列 + 异步执行，会开启新线程，但是因为任务是串行的，执行完一个任务，再执行下一个任务
+//串行队列 + 异步执行，会开启一个新线程，但是因为任务是串行的，执行完一个任务，再执行下一个任务
 - (void)asyncSerial {
     //开启了一条新线程，但是任务还是串行，所以任务是一个一个执行。
     NSLog(@"asyncSerial---begin");
@@ -293,11 +299,13 @@
             NSLog(@"1------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"2------%@", [NSThread currentThread]);
         }
     });
+    
     dispatch_async(queue, ^{
         for (int i = 0; i < 2; ++i) {
             NSLog(@"3------%@", [NSThread currentThread]);
@@ -313,6 +321,7 @@
     //syncMain方法和第一个任务都在等对方执行完毕，大家互相等待，所以就卡住了，所以我们的任务执行不了
     NSLog(@"syncMain---begin");
     
+    //主队列：GCD自带的一种特殊的串行队列，所有放在主队列中的任务，都会放到主线程中执行，可使用dispatch_get_main_queue()获得主队列
     dispatch_queue_t queue = dispatch_get_main_queue();
     
     dispatch_sync(queue, ^{
@@ -334,6 +343,7 @@
     });
     
     NSLog(@"syncMain---end");
+    //把任务放到了主队列中，也就是放到了主线程的队列中。而同步执行有个特点，就是对于任务是立马执行的。那么当我们把第一个任务放进主队列中，它就会立马执行。但是主线程现在正在处理syncMain方法，所以任务需要等syncMain执行完才能执行。而syncMain执行到第一个任务的时候，又要等第一个任务执行完才能往下执行第二个和第三个任务。那么，现在的情况就是syncMain方法和第一个任务都在等对方执行完毕。这样大家互相等待，所以就卡住了
 }
 
 //主队列 + 异步执行，只在主线程中执行任务，执行完一个任务，再执行下一个任务
