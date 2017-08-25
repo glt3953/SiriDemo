@@ -17,6 +17,10 @@
 @property (nonatomic, strong) SFSpeechAudioBufferRecognitionRequest *recognitionRequest; //处理了语音识别请求，它给语音识别提供了语音输入。
 @property (nonatomic, strong) SFSpeechRecognitionTask *recognitionTask; //告诉你语音识别对象的结果，拥有这个对象很方便因为你可以用它删除或者中断任务。
 @property (nonatomic, strong) AVAudioEngine *audioEngine; //语音引擎，它负责提供你的语音输入。
+#ifdef GCD_STUDY
+    @property (nonatomic) NSInteger idx; //包序号
+    @property (nonatomic, strong) NSLock *audioUploadLock; //增加上传语音锁
+#endif
 
 @end
 
@@ -27,16 +31,18 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     #ifdef GCD_STUDY
+        _idx = 0;
+        _audioUploadLock = [[NSLock alloc] init];
 //        [self syncConcurrent];
-//        [self asyncConcurrent];
+        [self asyncConcurrent];
 //        [self syncSerial];
 //        [self syncMain];
 //        [self asyncMain];
 //        [self threadCommunicate];
-//    [self barrierAsync];
-//    [self dispatchAfter];
-//    [self dispatchApply];
-    [self dispatchGroup];
+//        [self barrierAsync];
+//        [self dispatchAfter];
+//        [self dispatchApply];
+//        [self dispatchGroup];
     #endif
     
     /*
@@ -234,28 +240,64 @@
     //除了主线程，又开启了3个线程，并且任务是交替着同时执行的。
     NSLog(@"asyncConcurrent---begin");
     
-    dispatch_queue_t queue= dispatch_queue_create("test.queue", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_queue_t queue1 = dispatch_queue_create("1.queue", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_queue_t queue2 = dispatch_queue_create("2.queue", DISPATCH_QUEUE_CONCURRENT);
+//    dispatch_queue_t queue3 = dispatch_queue_create("3.queue", DISPATCH_QUEUE_CONCURRENT);
+//    NSArray *queueArray = @[queue1, queue2, queue3];
+//    for (NSUInteger i = 0; i < 3; i++) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * i * NSEC_PER_SEC)), queueArray[i], ^{
+//            NSLog(@"%lu------%@", (unsigned long)i, [NSThread currentThread]);
+//        });
+//    }
     
-    dispatch_async(queue, ^{
-        for (int i = 0; i < 2; ++i) {
-            NSLog(@"1------%@", [NSThread currentThread]);
-        }
-    });
+    dispatch_queue_t queue = dispatch_queue_create("test.queue", DISPATCH_QUEUE_CONCURRENT);
     
-    dispatch_async(queue, ^{
-        for (int i = 0; i < 2; ++i) {
-            NSLog(@"2------%@", [NSThread currentThread]);
-        }
-    });
+    for (NSUInteger i = 0; i < 3; i++) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * 0.01 * NSEC_PER_SEC)), queue, ^{
+//            NSLog(@"_idx:%ld, %lu------%@", (long)_idx, (unsigned long)i, [NSThread currentThread]);
+//            _idx++;
+//        });
+        dispatch_async(queue, ^{
+            //实现延迟，不会同步线程号
+//            NSLog(@"_idx:%ld, %lu------%@", (long)_idx, (unsigned long)i, [NSThread currentThread]);
+            [self uploadAudioData];
+//            [self performSelector:@selector(uploadAudioData) withObject:nil afterDelay:0.1 * i];
+        });
+        
+//        //实现延迟，不会同步线程号
+//        [self performSelector:@selector(uploadAudioData) withObject:nil afterDelay:0.01];
+//
+//        //避免多线程同时执行导致多次post的_idx为1的情况出现
+//        [NSThread sleepForTimeInterval:0.01];
+    }
     
-    dispatch_async(queue, ^{
-        for (int i = 0; i < 2; ++i) {
-            NSLog(@"3------%@", [NSThread currentThread]);
-        }
-    });
+//    dispatch_async(queue, ^{
+//        for (int i = 0; i < 2; ++i) {
+//            NSLog(@"1------%@", [NSThread currentThread]);
+//        }
+//    });
+//    
+//    dispatch_async(queue, ^{
+//        for (int i = 0; i < 2; ++i) {
+//            NSLog(@"2------%@", [NSThread currentThread]);
+//        }
+//    });
+//    
+//    dispatch_async(queue, ^{
+//        for (int i = 0; i < 2; ++i) {
+//            NSLog(@"3------%@", [NSThread currentThread]);
+//        }
+//    });
     
     NSLog(@"asyncConcurrent---end");
     //所有任务是在打印syncConcurrent---begin和syncConcurrent---end之后才开始执行的，说明任务不是马上执行，而是将所有任务添加到队列之后才开始异步执行。
+}
+
+- (void)uploadAudioData {
+    [_audioUploadLock lock];
+    _idx++;
+    [_audioUploadLock unlock];
+    NSLog(@"_idx:%ld, %@", (long)_idx, [NSThread currentThread]);
 }
 
 //串行队列 + 同步执行，不会开启新线程，在当前线程执行任务。任务是串行的，执行完一个任务，再执行下一个任务
